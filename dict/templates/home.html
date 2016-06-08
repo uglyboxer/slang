@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+  {% block content %}
+    Word or phrase:
+    <form action="/search/" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
+    {{ word }}
+    {{ definition }}
+  {% endblock %}
