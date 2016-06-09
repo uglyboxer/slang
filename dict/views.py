@@ -24,7 +24,7 @@ def search(request):
     try:
         term_entry = Entry.objects.get(word=search_term)
         print('yup')
-        return render(request, 'home.html', {'title': 'home',
+        return render(request, 'home.html', {'title': 'Slictionary',
                                              'word': term_entry.word,
                                              'definition': term_entry.definition})
 
@@ -38,5 +38,6 @@ def search(request):
         entry = Entry(word=search_term, definition=ret_def, response1='',
                       response2='')
         entry.save()
-        return render(request, 'home.html', {'word': search_term, 
+        return render(request, 'home.html', {'title': 'Slictionary',
+                                             'word': search_term, 
                                              'definition': ret_def})

@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
-  {% block content %}
-    Word or phrase:
-    <form action="/search/" method="get">
-        <input type="text" name="q">
-        <input type="submit" value="Search">
-    </form>
-    {{ word }}
-    {{ definition }}
-  {% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2">
+      <h2> {{ word }} </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <p> {{ definition }} </p>
+    </div>
+  </div>
+  </div>
+{% endblock %}
