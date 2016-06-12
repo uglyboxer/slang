@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-2">
-      <h2> {{ word }} </h2>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4">
+        <h1>Top 5 Searches</h1>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <p> {{ definition }} </p>
+    {% for entry in entries %}
+      <div class="row">
+        <div class="col-sm-4">
+          <h4> {{ entry.word }} </h4>
+        {% endfor %}
+      </div>
     </div>
-  </div>
   </div>
 {% endblock %}

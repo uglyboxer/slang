@@ -8,7 +8,9 @@ from dict.models import Entry
 
 
 def home_page(request):
-    return render(request, 'home.html')
+    entries = Entry.objects.all().order_by('-queries')[:5]
+    return render(request, 'home.html', {'title': 'Slictionary',
+                                         'entries': entries})
 
 
 def search(request):
@@ -23,8 +25,9 @@ def search(request):
 
     try:
         term_entry = Entry.objects.get(word=search_term)
-        print('yup')
-        return render(request, 'home.html', {'title': 'Slictionary',
+        term_entry.queries += 1
+        term_entry.save()
+        return render(request, 'results.html', {'title': 'Slictionary',
                                              'word': term_entry.word,
                                              'definition': term_entry.definition})
 
