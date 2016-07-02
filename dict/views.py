@@ -8,6 +8,8 @@ from django.db.models import Q
 
 from dict.models import Entry
 
+from dict.utils import get_translation
+
 
 def home_page(request):
     entries = Entry.objects.all().order_by('-queries')[:5]
@@ -33,7 +35,8 @@ def search(request):
         term_entry.save()
         return render(request, 'results.html', {'title': 'Slictionary',
                                              'word': term_entry.word,
-                                             'definition': term_entry.definition})
+                                             'definition': term_entry.definition,
+                                             'translation': term_entry.translation})
 
     except:
         
@@ -57,13 +60,18 @@ def search(request):
             tree = html.fromstring(page.content)
             ret_def = tree.xpath('//div[@class="definicion"]/div[2]/text()')[0]
 
-            # Translate
-            # 
-            # Insert into db
+            translation = get_translation(ret_def)
+            entry = Entry(word=search_term,
+                          definition=ret_def,
+                          translation=translation,
+                          response1='',
+                          response2='')
+            entry.save()
             
             return render(request, 'results.html', {'title': 'Slictionary',
                                                  'word': search_term, 
-                                                 'definition': ret_def})
+                                                 'definition': ret_def,
+                                                 'translation': translation})
 
 
 ### Check db
@@ -81,3 +89,7 @@ def search(request):
 ## definition = tree.xpath('//div[@class="definicion"]/div[2]/text()')
 ## TRANSLATE w/ Google API
 ## Insert into db
+## 
+## 
+## 0KZx/E/ieiI8ZJna4fA47dkVLF/7KeSQFd3v19uHmAM=
+## MS Azure API secret
