@@ -3,6 +3,8 @@ import datetime
 import pytz
 import requests
 
+from slang.settings import CLIENT_ID, CLIENT_SECRET
+
 from xml.etree import ElementTree
 
 from dict.models import Token
@@ -11,7 +13,8 @@ from dict.models import Token
 def get_new_token(token_obj):
     url = "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13"
 
-    payload = "client_id=563b5fd0-7d43-4e78-a556-2dffe238d83b&client_secret=GPSgnY3kZ%2FsuhtDXvXP6P4T31dThI8Yl721TXypKmF4&grant_type=client_credentials&scope=http%3A%2F%2Fapi.microsofttranslator.com"
+    # payload = "client_id=563b5fd0-7d43-4e78-a556-2dffe238d83b&client_secret=GPSgnY3kZ%2FsuhtDXvXP6P4T31dThI8Yl721TXypKmF4&grant_type=client_credentials&scope=http%3A%2F%2Fapi.microsofttranslator.com"
+    payload = "client_id={}&client_secret={}&grant_type=client_credentials&scope=http%3A%2F%2Fapi.microsofttranslator.com".format(CLIENT_ID, CLIENT_SECRET)
     headers = {
         'cache-control': "no-cache",
         'postman-token': "35dbdef3-48f2-f885-6a3d-e6b4a7a5e160",

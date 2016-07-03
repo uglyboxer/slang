@@ -20,6 +20,7 @@ def home_page(request):
 def search(request):
     # search_term = request.GET['q']
     search_term = request.POST['search-term']
+    search_term = search_term.lower()
         
     # qset = Q()
     # for term in search_term.split():
@@ -43,53 +44,46 @@ def search(request):
         if not request.POST.get('spanish', ''):
             url = 'http://api.urbandictionary.com/v0/define?term=%s' % (search_term)
 
-            r = requests.get(url)
-            data = r.json()
-            ret_def = data['list'][0]['definition']
-            entry = Entry(word=search_term, definition=ret_def, response1='',
-                          response2='')
-            entry.save()
+            try:
+                r = requests.get(url)
+                data = r.json()
+                if data['list']:
+                    ret_def = data['list'][0]['definition']
+                    entry = Entry(word=search_term, definition=ret_def, response1='',
+                                  response2='')
+                    entry.save()
+                else:
+                    ret_def = "No matching results found."
+            except requests.exceptions.ConnectionError:
+                ret_def = "Connection error, please try again later."
+
             return render(request, 'results.html', {'title': 'Slictionary',
                                                  'word': search_term, 
                                                  'definition': ret_def})
 
         else:
-            page = requests.get(
-                'http://www.asihablamos.com/word/palabra/{}.php?pais=MX'\
-                .format(search_term))  
-            tree = html.fromstring(page.content)
-            ret_def = tree.xpath('//div[@class="definicion"]/div[2]/text()')[0]
-
-            translation = get_translation(ret_def)
-            entry = Entry(word=search_term,
-                          definition=ret_def,
-                          translation=translation,
-                          response1='',
-                          response2='')
-            entry.save()
+            try:
+                page = requests.get(
+                    'http://www.asihablamos.com/word/palabra/{}.php?pais=MX'\
+                    .format(search_term))
+                tree = html.fromstring(page.content)
+                ret_def = tree.xpath('//div[@class="definicion"]/div[2]/text()')
+                if ret_def:
+                    definition = ret_def[0]
+                    translation = get_translation(ret_def)
+                    entry = Entry(word=search_term,
+                                  definition=definition,
+                                  translation=translation,
+                                  response1='',
+                                  response2='')
+                    entry.save()
+                else:
+                    definition = "No matching results found."
+                    translation = ""
+            except requests.exceptions.ConnectionError:
+                pass
             
             return render(request, 'results.html', {'title': 'Slictionary',
                                                  'word': search_term, 
-                                                 'definition': ret_def,
+                                                 'definition': definition,
                                                  'translation': translation})
-
-
-### Check db
-## If not in:
-## determine Spanish/English
-## Eng use above
-## Spanish use below
-
-#### Spanish
-## from asihablamos.com
-## 
-## from lxml import html
-## page = requests.get('http://www.asihablamos.com/word/palabra/{{ search term }}.php?pais=MX')  
-## tree = html.fromstring(page.content)
-## definition = tree.xpath('//div[@class="definicion"]/div[2]/text()')
-## TRANSLATE w/ Google API
-## Insert into db
-## 
-## 
-## 0KZx/E/ieiI8ZJna4fA47dkVLF/7KeSQFd3v19uHmAM=
-## MS Azure API secret
