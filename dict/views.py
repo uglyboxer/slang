@@ -18,18 +18,9 @@ def home_page(request):
 
 
 def search(request):
-    # search_term = request.GET['q']
-    search_term = request.POST['search-term']
+    search_term = request.GET['search-term']
     search_term = search_term.lower()
         
-    # qset = Q()
-    # for term in search_term.split():
-    #     qset |= Q(name__contains=term)
-
-    # matching_results = Entry.objects.filter(qset)
-
-    # definition = matching_results[0]['definition']
-
     try:
         term_entry = Entry.objects.get(word=search_term)
         term_entry.queries += 1
@@ -41,9 +32,9 @@ def search(request):
 
     except:
         
-        if not request.POST.get('spanish', ''):
+        if not request.GET.get('spanish', ''):
             url = 'http://api.urbandictionary.com/v0/define?term=%s' % (search_term)
-
+            translation = ""
             try:
                 r = requests.get(url)
                 data = r.json()
@@ -59,7 +50,8 @@ def search(request):
 
             return render(request, 'results.html', {'title': 'Slictionary',
                                                  'word': search_term, 
-                                                 'definition': ret_def})
+                                                 'definition': ret_def,
+                                                 'translation': translation})
 
         else:
             try:

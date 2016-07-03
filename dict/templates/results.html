@@ -9,8 +9,20 @@
   <div class="row">
     <div class="col-sm-6">
       <p> {{ definition }} </p>
-      <p> {{ translation }} </p>
+      {% if translation != "" and translation != None  %}
+        <p><button id="translation-button" onclick="defTranslate()">Translate?</button><p>
+      {% endif %}
+      <p id="translation-text" style="visibility: hidden;"> {{ translation }} </p>
     </div>
   </div>
   </div>
+  <script>
+  function defTranslate() {
+    var d = document;
+    btn = d.getElementById("translation-button");
+    txt = d.getElementById("translation-text");
+    btn.style.visibility = "hidden";
+    txt.style.visibility = "visible";
+  }
+  </script>
 {% endblock %}

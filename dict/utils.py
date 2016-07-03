@@ -46,8 +46,8 @@ def get_translation(phrase):
     url = "http://api.microsofttranslator.com/v2/Http.svc/Translate?text={}&to=en".format(phrase)
 
     try:
-        translationData = requests.get(url, headers=headers)
-        translation = ElementTree.fromstring(translationData.text.encode('utf-8')) 
+        translation_data = requests.get(url, headers=headers)
+        translation = ElementTree.fromstring(translation_data.text.encode('utf-8')) 
         return translation.text 
 
     except OSError:

@@ -9,7 +9,7 @@
     {% for entry in entries %}
       <div class="row">
         <div class="col-sm-4">
-          <h3> {{ entry.word }} </h3>
+          <a href="/search/?search-term={{ entry.word }}"><h3>{{ entry.word }} </h3></a>
         {% endfor %}
       </div>
     </div>
