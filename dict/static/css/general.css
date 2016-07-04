@@ -27,6 +27,7 @@ body, html {
 	border-bottom: 1px solid #32465A;
 	background-color: #34495e;
 	padding: 90px 0;
+	color: white;
 }
 
 .descp{
@@ -1251,4 +1252,13 @@ p.copyright {
 		display: none;
 	}
 
+}
+
+.terms {
+	color: white;
+}
+
+.topfive {
+	text-align: center;
+	margin: 0;
 }
