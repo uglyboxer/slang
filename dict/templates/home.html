@@ -1,17 +1,26 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block content %}
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-4">
-        <h1>Top 5 Searches</h1>
-      </div>
+
+<!-- FullScreen -->
+<div class="intro-header">
+    <div class="col-xs-12 text-center abcen1">
+        <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">Slang Town</h1>
+        <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Phrases you didn't know you need to know</h3>
+        <ul class="list-inline intro-social-buttons">
+            <li><a href="https://twitter.com/galantiandrea" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s"><span class="network-name">Twitter</span></a>
+            </li>
+            <li id="download" ><a href="#searchlink" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"><span class="network-name">Search Now</span></a>
+            </li>
+        </ul>
+    </div>    
+    <!-- /.container -->
+    <div class="col-xs-12 text-center abcen wow fadeIn">
+        <div class="button_down "> 
+            <a class="imgcircle wow bounceInUp" data-wow-duration="1.5s"  href="#whatis"> <img class="img_scroll" src="{% static 'img/icon/circle.png' %}" alt=""> </a>
+        </div>
     </div>
-    {% for entry in entries %}
-      <div class="row">
-        <div class="col-sm-4">
-          <a href="/search/?search-term={{ entry.word }}"><h3>{{ entry.word }} </h3></a>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
+</div>
+
+
 {% endblock %}
