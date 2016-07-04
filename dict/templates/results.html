@@ -2,18 +2,20 @@
 {% block content2 %}
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-2">
+                <div class="col-sm-6 wow fadeInLeftBig"  data-animation-delay="200">   
+    <!-- <div class="col-sm-2"> -->
       <h2> {{ word }} </h2>
     </div>
   </div>
-  <div class="row">
+  <div class="row wow bounceInUp">
     <div class="col-sm-6">
       <p> {{ definition }} </p>
       {% if translation != "" and translation != None  %}
-        <p><button id="translation-button" onclick="defTranslate()">Translate?</button><p>
+        <p><button class="btn btn-embossed btn-primary" id="translation-button" onclick="defTranslate()">Translate?</button><p>
       {% endif %}
       <p id="translation-text" style="visibility: hidden;"> {{ translation }} </p>
     </div>
+        <p><button class="btn btn-embossed btn-primary"><a href="#searchlink">New Search</a></button><p>
   </div>
   </div>
   <script>
