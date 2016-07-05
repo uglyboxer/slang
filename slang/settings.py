@@ -29,8 +29,8 @@ except:
     CLIENT_SECRET = os.environ.get('CLIENT_SECRET', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -137,4 +137,4 @@ STATICFILES_DIRS = (
 
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
-
+DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
