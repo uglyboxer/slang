@@ -26,11 +26,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 CLIENT_ID = os.environ.get('CLIENT_ID', '')
 CLIENT_SECRET = os.environ.get('CLIENT_SECRET', '')
 
-from slang.local_settings import *
-# try:
-#     from slang.local_settings import *
-# except:
-#     pass
+try:
+    from slang.local_settings import *
+except:
+    pass
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
