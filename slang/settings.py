@@ -29,8 +29,8 @@ except:
     CLIENT_SECRET = os.environ.get('CLIENT_SECRET', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
