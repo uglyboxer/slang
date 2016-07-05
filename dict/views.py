@@ -1,5 +1,6 @@
 import requests
 import json
+import urllib
 
 from lxml import html
 
@@ -20,6 +21,8 @@ def home_page(request):
 def search(request):
     search_term = request.GET['search-term']
     search_term = search_term.lower()
+    print(search_term)
+    print("------")
         
     try:
         term_entry = Entry.objects.get(word=search_term)
@@ -33,7 +36,11 @@ def search(request):
     except:
         
         if not request.GET.get('spanish', ''):
-            url = 'http://api.urbandictionary.com/v0/define?term=%s' % (search_term)
+            f = {'term': search_term}
+            q = urllib.parse.urlencode(f)
+            url = 'http://api.urbandictionary.com/v0/define?' + q
+            print(url)
+            print("---")
             translation = ""
             try:
                 r = requests.get(url)
@@ -55,9 +62,10 @@ def search(request):
 
         else:
             try:
+                url_search_term = urllib.parse.quote_plus(search_term)
                 page = requests.get(
                     'http://www.asihablamos.com/word/palabra/{}.php?pais=MX'\
-                    .format(search_term))
+                    .format(url_search_term))
                 tree = html.fromstring(page.content)
                 ret_def = tree.xpath('//div[@class="definicion"]/div[2]/text()')
                 if ret_def:

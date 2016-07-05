@@ -25,15 +25,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 CLIENT_ID = os.environ.get('CLIENT_ID', '')
 CLIENT_SECRET = os.environ.get('CLIENT_SECRET', '')
-
+DEBUG = False
 try:
     from slang.local_settings import *
 except:
     pass
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-# DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
