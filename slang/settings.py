@@ -21,11 +21,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-# from slang.secrets import *
-
 try:
-    SECRET_KEY
-except NameError:
+    from slang.secrets import *
+except:
     SECRET_KEY = os.environ.get('SECRET_KEY', '')
     CLIENT_ID = os.environ.get('CLIENT_ID', '')
     CLIENT_SECRET = os.environ.get('CLIENT_SECRET', '')
@@ -133,6 +131,6 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'dict', 'static'),
+    os.path.join(PROJECT_ROOT, 'static'),
 )
 
