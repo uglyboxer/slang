@@ -21,12 +21,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-try:
-    from slang.secrets import *
-except:
-    SECRET_KEY = os.environ.get('SECRET_KEY', '')
-    CLIENT_ID = os.environ.get('CLIENT_ID', '')
-    CLIENT_SECRET = os.environ.get('CLIENT_SECRET', '')
+
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
+CLIENT_ID = os.environ.get('CLIENT_ID', '')
+CLIENT_SECRET = os.environ.get('CLIENT_SECRET', '')
+
+from slang.local_settings import *
+# try:
+#     from slang.local_settings import *
+# except:
+#     pass
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -83,10 +87,7 @@ WSGI_APPLICATION = 'slang.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': {}
 }
 
 
@@ -138,3 +139,8 @@ STATICFILES_DIRS = (
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
 DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+
+try:
+    from slang.local_settings import DATABASES
+except:
+    pass
