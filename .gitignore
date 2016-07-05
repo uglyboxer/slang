@@ -3,3 +3,4 @@ db.sqlite3
 *.pyc
 slang/secrets.py
 slang/staticfiles/
+slang/local_settings.py
