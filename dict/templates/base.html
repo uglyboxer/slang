@@ -44,182 +44,164 @@
 	<script src="js/html5shiv.js"></script>
 	<![endif]-->
 </head>
-<body id="home">
-	<!-- Preloader -->
-	<div id="preloader">
-		<div id="status"></div>
-	</div>
-	{% block content %}
-	{% endblock %}
-	
-	<!-- NavBar-->
-	<nav class="navbar-default" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/">Slang Town</a>
-			</div>
-			<div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
-				<ul class="nav navbar-nav">
-					
-					<li class="menuItem"><a href="#whatis">What is?</a></li>
-					<li class="menuItem"><a href="#topfive">What' Hot?</a></li>
-					<li class="menuItem"><a href="#searchlink">Use It</a></li>
-					<li class="menuItem"><a href="#contact">Contact</a></li>
-				</ul>
-			</div>
-			
+	<body id="home">
+		<!-- Preloader -->
+		<div id="preloader">
+			<div id="status"></div>
 		</div>
-	</nav>
-	{% block content2 %}
-	{% endblock %}
-	<!-- What is -->
-	<div id="whatis" class="content-section-a" style="border-top: 0">
-		<div class="container">
-			<div class="col-md-6 col-md-offset-3 text-center wrap_title">
-				<h2>What is?</h2>
-				<p class="lead" style="margin-top:0">Things will be said, hang here and keep up.</p>
+		{% block content %}
+		{% endblock %}
+		
+		<!-- NavBar-->
+		<nav class="navbar-default" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">Slang Town</a>
+				</div>
+				<div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+					<ul class="nav navbar-nav">
+						
+						<li class="menuItem"><a href="#whatis">What is?</a></li>
+						<li class="menuItem"><a href="#topfive">What' Hot?</a></li>
+						<li class="menuItem"><a href="#searchlink">Use It</a></li>
+						<li class="menuItem"><a href="#contact">Contact</a></li>
+					</ul>
+				</div>
 				
 			</div>
-			
-			<div class="row">
+		</nav>
+		{% block content2 %}
+		{% endblock %}
+		<!-- What is -->
+		<div id="whatis" class="content-section-a" style="border-top: 0">
+			<div class="container">
+				<div class="col-md-6 col-md-offset-3 text-center wrap_title">
+					<h2>What is?</h2>
+					<p class="lead" style="margin-top:0">Things will be said, hang here and keep up.</p>
+					
+				</div>
 				
-				<div class="col-sm-4 col-md-offset-2 wow fadeInDown text-center">
-					<img class="rotate" src="{% static 'img/icon/tweet.svg' %}" alt="Generic placeholder image">
-					<h3>The Web</h3>
-					<p class="lead">We'll find what we can crawling in the dark corners.  (And for that reason be forewarned, this by accident may be NSFW.</p>
-					<!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+				<div class="row">
+					
+					<div class="col-sm-4 col-md-offset-2 wow fadeInDown text-center">
+						<img class="rotate" src="{% static 'img/icon/tweet.svg' %}" alt="Generic placeholder image">
+						<h3>The Web</h3>
+						<p class="lead">We'll find what we can crawling in the dark corners.  (And for that reason be forewarned, this by accident may be NSFW.</p>
+						<!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
 					</div><!-- /.col-lg-4 -->
-					
+						
 
+							
+					<div class="col-sm-4 wow fadeInDown text-center">
+						<img  class="rotate" src="{% static 'img/icon/retina.svg' %}" alt="Generic placeholder image">
+						<h3>You</h3>
+						<p class="lead">Crowd-sourced slang and how to use it! (coming soon)</p>
+						<!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+					</div><!-- /.col-lg-4 -->
+								
+				</div><!-- /.row -->
+								
+			</div>
+		</div>
 						
-						<div class="col-sm-4 wow fadeInDown text-center">
-							<img  class="rotate" src="{% static 'img/icon/retina.svg' %}" alt="Generic placeholder image">
-							<h3>You</h3>
-							<p class="lead">Crowd-sourced slang and how to use it! (coming soon)</p>
-							<!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-							</div><!-- /.col-lg-4 -->
+						<!-- Banner Download -->
+		<div id="searchlink" class="banner content-section-c">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3 text-center wrap_title">
+						<h2>Search</h2>
+						<!-- 				<p class="lead" style="margin-top:0">Pay with a Tweet</p> -->
+						<!-- 			<p><a class="btn btn-embossed btn-primary view" role="button">Free Download</a></p> -->
+						<form role="search" action="/search/" method="get">
+							<div class="form-group">
+								<input name="search-term" type="text" class="form-control" placeholder="Search">
+								<input type="checkbox" name="spanish">
+								<label for="spanish">Spanish?</label>
+							</div>
+							<!-- <button type="submit" class="btn btn-default">Submit</button> -->
+							<input type="submit" class="btn btn-default" value="Submit">
 							
-							</div><!-- /.row -->
-							
-						</div>
+						</form>
 					</div>
-					
-					<!-- Banner Download -->
-					<div id="searchlink" class="banner content-section-c">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-6 col-md-offset-3 text-center wrap_title">
-									<h2>Search</h2>
-									<!-- 				<p class="lead" style="margin-top:0">Pay with a Tweet</p> -->
-									<!-- 			<p><a class="btn btn-embossed btn-primary view" role="button">Free Download</a></p> -->
-									<form role="search" action="/search/" method="get">
-										<div class="form-group">
-											<input name="search-term" type="text" class="form-control" placeholder="Search">
-											<input type="checkbox" name="spanish">
-											<label for="spanish">Spanish?</label>
-										</div>
-										<!-- <button type="submit" class="btn btn-default">Submit</button> -->
-										<input type="submit" class="btn btn-default" value="Submit">
-										
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div  class="content-section-c " hidden>
-						<div class="container">
-							<div class="row">
-								<div class="col-md-6 col-md-offset-3 text-center">
-									<div class="mockup-content">
-										<div class="morph-button wow pulse morph-button-inflow morph-button-inflow-1">
-											<button type="button "><span>Subscribe to our Newsletter</span></button>
-											<div class="morph-content">
-												<div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div id="topfive" class="content-section-c">
-						{% block content3 %}
-						{% endblock %}
-					</div>
-					
-					<!-- Contact -->
-					<div id="contact" class="content-section-a">
-						<div class="container">
-							<div class="row">
-								
-								<div class="col-md-6 col-md-offset-3 text-center wrap_title">
-									<h3>cobbled by</h3>
-									<p class="lead" style="margin-top:0">uglyboxer designs</p>
-								</div>
-								
-								
-								<div class="col-md-5 col-md-push-1 address">
-									<h3>Contact</h3>
-									<li class="social">
-										<a href="http://twitter.com/uglyboxer"><i class="fa fa-twitter-square fa-size"> </i> </a>
-										<a href="http://github.com/uglyboxer"><i class="fa fa-github-square fa-size"> </i></a>
-										<a href="mailto:uglyboxer@gmail.com"><i class="fa fa-envelope fa-size"> </i></a>
-									</li>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					
-					<footer>
-						<div class="container">
-							<div class="row">
-								<div class="col-md-7">
-									
-									<!-- LICENSE -->
-									<a rel="cc:attributionURL" href="http://www.andreagalanti.it/flatfy"
-									property="dc:title">Flatfy Theme </a> by
-									<a rel="dc:creator" href="http://www.andreagalanti.it"
-									property="cc:attributionName">Andrea Galanti</a>
-									
-									
-									</div> <!-- /col-xs-7 -->
-								</div>
-							</div>
-						</footer>
-						<!-- JavaScript -->
-						<script src="{% static 'js/jquery-1.10.2.js' %}"></script>
-						<script src="{% static 'js/bootstrap.js' %}"></script>
-						<script src="{% static 'js/owl.carousel.js' %}"></script>
-						<script src="{% static 'js/script.js' %}"></script>
-						<!-- StikyMenu -->
-						<script src="{% static 'js/stickUp.min.js' %}"></script>
-						<script type="text/javascript">
-						jQuery(function($) {
-							$(document).ready( function() {
-							$('.navbar-default').stickUp();
-							
-							});
-						});
+				</div>
+			</div>
+		</div>
 						
-						</script>
-						<!-- Smoothscroll -->
-						<script type="text/javascript" src="{% static 'js/jquery.corner.js' %}"></script>
-						<script src="{% static 'js/wow.min.js' %}"></script>
-						<script>
-						new WOW().init();
-						</script>
-						<script src="{% static 'js/classie.js' %}"></script>
-						<script src="{% static 'js/uiMorphingButton_inflow.js' %}"></script>
-						<!-- Magnific Popup core JS file -->
-						<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
-					</body>
-				</html>
+		<div id="topfive" class="content-section-c">
+			{% block content3 %}
+			{% endblock %}
+		</div>
+						
+		<!-- Contact -->
+		<div id="contact" class="content-section-a">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-md-6 col-md-offset-3 text-center wrap_title">
+						<h3>cobbled by</h3>
+						<p class="lead" style="margin-top:0">uglyboxer designs</p>
+					</div>
+					
+					
+					<div class="col-md-5 col-md-push-1 address">
+						<h3>Contact</h3>
+						<li class="social">
+							<a href="http://twitter.com/uglyboxer"><i class="fa fa-twitter-square fa-size"> </i> </a>
+							<a href="http://github.com/uglyboxer"><i class="fa fa-github-square fa-size"> </i></a>
+							<a href="mailto:uglyboxer@gmail.com"><i class="fa fa-envelope fa-size"> </i></a>
+						</li>
+					</div>
+				</div>
+			</div>			
+		</div>
+						
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7">
+						
+						<!-- LICENSE -->
+						<a rel="cc:attributionURL" href="http://www.andreagalanti.it/flatfy"
+						property="dc:title">Flatfy Theme </a> by
+						<a rel="dc:creator" href="http://www.andreagalanti.it"
+						property="cc:attributionName">Andrea Galanti</a>
+						
+						
+					</div> <!-- /col-xs-7 -->
+				</div>
+			</div>
+		</footer>
+		<!-- JavaScript -->
+		<script src="{% static 'js/jquery-1.10.2.js' %}"></script>
+		<script src="{% static 'js/bootstrap.js' %}"></script>
+		<script src="{% static 'js/owl.carousel.js' %}"></script>
+		<script src="{% static 'js/script.js' %}"></script>
+		<!-- StikyMenu -->
+		<script src="{% static 'js/stickUp.min.js' %}"></script>
+		<script type="text/javascript">
+		jQuery(function($) {
+			$(document).ready( function() {
+			$('.navbar-default').stickUp();
+			
+			});
+		});
+		
+		</script>
+		<!-- Smoothscroll -->
+		<script type="text/javascript" src="{% static 'js/jquery.corner.js' %}"></script>
+		<script src="{% static 'js/wow.min.js' %}"></script>
+		<script>
+		new WOW().init();
+		</script>
+		<script src="{% static 'js/classie.js' %}"></script>
+		<script src="{% static 'js/uiMorphingButton_inflow.js' %}"></script>
+		<!-- Magnific Popup core JS file -->
+		<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+	</body>
+</html>
