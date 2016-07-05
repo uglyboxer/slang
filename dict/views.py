@@ -21,8 +21,6 @@ def home_page(request):
 def search(request):
     search_term = request.GET['search-term']
     search_term = search_term.lower()
-    print(search_term)
-    print("------")
         
     try:
         term_entry = Entry.objects.get(word=search_term)
@@ -39,8 +37,6 @@ def search(request):
             f = {'term': search_term}
             q = urllib.parse.urlencode(f)
             url = 'http://api.urbandictionary.com/v0/define?' + q
-            print(url)
-            print("---")
             translation = ""
             try:
                 r = requests.get(url)
