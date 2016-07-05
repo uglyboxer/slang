@@ -23,7 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # from slang.secrets import *
 
-if not SECRET_KEY:
+try:
+    SECRET_KEY
+except NameError:
     SECRET_KEY = os.environ.get('SECRET_KEY', '')
     CLIENT_ID = os.environ.get('CLIENT_ID', '')
     CLIENT_SECRET = os.environ.get('CLIENT_SECRET', '')
