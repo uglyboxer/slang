@@ -85,6 +85,7 @@ def search(request):
                     translation = ""
             except requests.exceptions.ConnectionError:
                 # logger.exception('Error in asihablamos call')
+                pass
             
             return render(request, 'results.html', {'title': 'Slictionary',
                                                  'word': search_term, 
