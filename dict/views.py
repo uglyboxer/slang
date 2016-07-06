@@ -41,7 +41,7 @@ def search(request):
         logger.exception('Error in db lookup')
         if not request.GET.get('spanish', ''):
             f = {'term': search_term}
-            q = urllib.parse.urlencode(f)
+            q = urllib.urlencode(f)
             url = 'http://api.urbandictionary.com/v0/define?' + q
             translation = ""
             try:
@@ -65,7 +65,7 @@ def search(request):
 
         else:
             try:
-                url_search_term = urllib.parse.quote_plus(search_term)
+                url_search_term = urllib.quote_plus(search_term)
                 page = requests.get(
                     'http://www.asihablamos.com/word/palabra/{}.php?pais=MX'\
                     .format(url_search_term))
