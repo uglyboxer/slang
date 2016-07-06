@@ -23,8 +23,8 @@ def make_new_token():
 
     response = requests.request("POST", url, data=payload, headers=headers)
     t = response.json()["access_token"]
-    Token.objects.create(token=t)
-    return t
+    token_obj = Token.objects.create(token=t)
+    return token_obj
 
 def get_new_token(token_obj):
     url = "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13"
