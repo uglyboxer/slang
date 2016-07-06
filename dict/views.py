@@ -1,6 +1,7 @@
 import requests
 import json
 import urllib
+import logging
 
 from lxml import html
 
@@ -19,6 +20,9 @@ def home_page(request):
 
 
 def search(request):
+
+    logger = logging.getLogger(__name__)
+
     search_term = request.GET['search-term']
     search_term = search_term.lower()
         
@@ -32,7 +36,7 @@ def search(request):
                                              'translation': term_entry.translation})
 
     except:
-        
+        logger.exception()
         if not request.GET.get('spanish', ''):
             f = {'term': search_term}
             q = urllib.parse.urlencode(f)
@@ -49,6 +53,7 @@ def search(request):
                 else:
                     ret_def = "No matching results found."
             except requests.exceptions.ConnectionError:
+                logger.exception()
                 ret_def = "Connection error, please try again later."
 
             return render(request, 'results.html', {'title': 'Slictionary',
@@ -77,7 +82,7 @@ def search(request):
                     definition = "No matching results found."
                     translation = ""
             except requests.exceptions.ConnectionError:
-                pass
+                logger.exception()
             
             return render(request, 'results.html', {'title': 'Slictionary',
                                                  'word': search_term, 
