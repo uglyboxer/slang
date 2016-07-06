@@ -38,7 +38,7 @@ def search(request):
                                              'translation': term_entry.translation})
 
     except:
-        logger.exception()
+        logger.exception('Error in db lookup')
         if not request.GET.get('spanish', ''):
             f = {'term': search_term}
             q = urllib.parse.urlencode(f)
@@ -55,7 +55,7 @@ def search(request):
                 else:
                     ret_def = "No matching results found."
             except requests.exceptions.ConnectionError:
-                logger.exception()
+                logger.exception('Error in urbandict call')
                 ret_def = "Connection error, please try again later."
 
             return render(request, 'results.html', {'title': 'Slictionary',
@@ -84,7 +84,7 @@ def search(request):
                     definition = "No matching results found."
                     translation = ""
             except requests.exceptions.ConnectionError:
-                logger.exception()
+                logger.exception('Error in asihablamos call')
             
             return render(request, 'results.html', {'title': 'Slictionary',
                                                  'word': search_term, 
