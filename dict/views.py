@@ -2,6 +2,7 @@ import requests
 import json
 import urllib
 import logging
+import sys
 
 from lxml import html
 
@@ -21,7 +22,8 @@ def home_page(request):
 
 def search(request):
 
-    logger = logging.getLogger('testlogger')
+    logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+    logger = logging.getLogger(__name__)
 
     search_term = request.GET['search-term']
     search_term = search_term.lower()
