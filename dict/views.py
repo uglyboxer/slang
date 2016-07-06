@@ -21,7 +21,7 @@ def home_page(request):
 
 def search(request):
 
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger('testlogger')
 
     search_term = request.GET['search-term']
     search_term = search_term.lower()
