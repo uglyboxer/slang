@@ -28,6 +28,8 @@ Point your browser to localhost:8000
 
 Author: Cole Howard
 
+FLATLY Theme by: [Andrea Galanti](https://www.andreagalanti.it/flatfy)
+
 ## License
 
 MIT License
